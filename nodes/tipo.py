@@ -330,6 +330,7 @@ class TIPO:
             org_formatted_prompt, strength_map, strength_map_nl
         )
         formatted_prompt_by_user = apply_format(org_formatted_prompt, format)
+        print(f"[TIPO OUTPUT] {formatted_prompt_by_user}")
         unformatted_prompt_by_user = tags + nl_prompt
 
         tag_map, _ = tipo_runner(
