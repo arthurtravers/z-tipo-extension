@@ -195,6 +195,7 @@ class TIPO:
             "tags": ("STRING", {"defaultInput": True, "multiline": True}),
             "nl_prompt": ("STRING", {"defaultInput": True, "multiline": True}),
             "ban_tags": ("STRING", {"defaultInput": True, "multiline": True}),
+            "prepend_text": ("STRING", {"default": "", "multiline": True}),
             "tipo_model": (MODEL_NAME_LIST, {"default": MODEL_NAME_LIST[0]}),
             "format": (
                 "STRING",
@@ -245,6 +246,7 @@ class TIPO:
         tipo_model: str,
         tags: str,
         nl_prompt: str,
+        prepend_text: str,
         width: int,
         height: int,
         seed: int,
@@ -370,6 +372,12 @@ class TIPO:
 
         tag_map = apply_strength(tag_map, strength_map, strength_map_nl)
         formatted_prompt_by_tipo = apply_format(tag_map, format)
+
+        # Prepend user's natural language before TIPO output if provided
+        if prepend_text:
+            formatted_prompt_by_tipo = f"{prepend_text}, {formatted_prompt_by_tipo}"
+            unformatted_prompt_by_tipo = f"{prepend_text}, {unformatted_prompt_by_tipo}"
+
         return (
             formatted_prompt_by_tipo,
             formatted_prompt_by_user,
