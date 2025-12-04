@@ -9,7 +9,7 @@ from comfy.cli_args import args
 
 from ..tipo_installer import install_tipo_kgen, install_llama_cpp
 
-install_llama_cpp()
+# install_llama_cpp()   # disable llama-cpp install
 install_tipo_kgen()
 
 import kgen.models as models
