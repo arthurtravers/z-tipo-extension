@@ -6,7 +6,7 @@ try:
 except:
     from tipo_installer import *
 
-    install_llama_cpp()
+    # install_llama_cpp()  # disabled to skip llama-cpp
     install_tipo_kgen()
 else:
 
